@@ -8,54 +8,73 @@
     <link href="/css/register.css" rel="stylesheet" />
   </head>
   <body>
-    <div id="form-container">
-      <h1>Register</h1>
-      <form id="register-form" method="post" action="/register">
-        <label for="firstName">First Name</label>
-        <input
-          class="nameInput"
-          type="text"
-          name="firstName"
-          value=""
-          placeholder="Enter First Name"
-          minlength="2"
-          required
-        />
+    <div id="root">
+      <div id="form-container">
+        <h1>Register</h1>
+        <form id="register-form" method="post" action="/register">
+          <div class="input-container">
+            <div class="label-container">
+              <label for="firstName">First Name</label>
+            </div>
+            <input
+              class="input"
+              type="text"
+              name="firstName"
+              value=""
+              placeholder="Enter First Name"
+              minlength="2"
+              required
+            />
+          </div>
 
-        <label for="lastName">Last Name</label>
-        <input
-          class="nameInput"
-          type="text"
-          name="lastName"
-          value=""
-          placeholder="Enter Last Name"
-          minlength="2"
-          required
-        />
+          <div class="input-container">
+            <div class="label-container">
+              <label for="lastName">Last Name</label>
+            </div>
+            <input
+              class="input"
+              type="text"
+              name="lastName"
+              value=""
+              placeholder="Enter Last Name"
+              minlength="2"
+              required
+            />
+          </div>
 
-        <label for="email">Email</label>
-        <input
-          class="nameInput"
-          type="email"
-          name="email"
-          value=""
-          placeholder="Enter Email"
-          required
-        />
+          <div class="input-container">
+            <div class="label-container">
+              <label for="email">Email</label>
+            </div>
+            <input
+              class="input"
+              type="email"
+              name="email"
+              value=""
+              placeholder="Enter Email"
+              required
+            />
+          </div>
 
-        <label for="password">Password</label>
-        <input
-          class="passwordInput"
-          type="password"
-          name="password"
-          value=""
-          placeholder="Enter Password"
-          minlength="4"
-          required
-        />
-
-        <input type="submit" />
-      </form>
+          <div class="input-container">
+            <div class="label-container">
+              <label for="password">Password</label>
+            </div>
+            <input
+              class="input"
+              type="password"
+              name="password"
+              value=""
+              placeholder="Enter Password"
+              minlength="4"
+              required
+            />
+          </div>
+          <div class="input-container">
+            <input class="submit" type="submit" />
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
