@@ -42,3 +42,23 @@ export const saveUser = async (firstName, lastName, email, password) => {
     client.release();
   }
 };
+
+export const verifyUser = async (userId) => {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+    const queryText = `UPDATE users
+    SET "isVerified"=$1 WHERE users.id=$2;`;
+    const res = await client.query(queryText, [true, userId]);
+    console.log(res);
+    await client.query("COMMIT");
+    return true;
+  } catch (err) {
+    await client.query("ROLLBACK");
+    console.log(err);
+    return false;
+  } finally {
+    client.release();
+  }
+};

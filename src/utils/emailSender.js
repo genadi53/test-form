@@ -31,7 +31,7 @@ export const sendEmail = async (receiver, subject, html) => {
     html,
   };
 
-  await transport.sendMail(mainOptions, function (err) {
+  await gmailTransport.sendMail(mainOptions, function (err) {
     if (err) {
       console.log(err);
       throw err;

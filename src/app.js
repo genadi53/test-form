@@ -1,8 +1,7 @@
 import express from "express";
 import * as path from "path";
-import { registerUser } from "./controllers/index.js";
-import ejs from "ejs";
 import * as url from "url";
+import AuthRouter from "./routes/index.js";
 // const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
@@ -17,20 +16,7 @@ const main = async () => {
   app.set("views", path.join(__dirname, "views"));
   app.use(express.static(path.join(__dirname, "public")));
 
-  app.get("/", (req, res) => {
-    res.redirect("/register");
-  });
-
-  app.get("/register", (req, res) => {
-    res.render("register");
-  });
-
-  app.post("/register", registerUser);
-
-  app.get("/verify-email/:id", (req, res) => {
-    const { id } = req.params;
-    res.send(`${id}`);
-  });
+  app.use("", AuthRouter);
 
   app.all("*", (req, res) => {
     res.status(404).send("Not Found!");
