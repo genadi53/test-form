@@ -1,8 +1,7 @@
 import express from "express";
 import * as path from "path";
-import { fileURLToPath } from "url";
-import pug from "pug";
-
+import { registerUser } from "./controllers/index.js";
+import ejs from "ejs";
 import * as url from "url";
 // const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
@@ -14,21 +13,24 @@ const main = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
-  app.set("view engine", "pug");
+  app.set("view engine", "ejs");
   app.set("views", path.join(__dirname, "views"));
-  //   app.use(express.static(path.join(__dirname, "public")));
+  app.use(express.static(path.join(__dirname, "public")));
 
   app.get("/", (req, res) => {
     res.redirect("/register");
   });
 
   app.get("/register", (req, res) => {
-    res.render("index", { title: "Hey", message: "Hello there!" });
+    res.render("register");
   });
 
-  app.post("/register", (req, res) => {});
+  app.post("/register", registerUser);
 
-  app.post("/verify-email", (req, res) => {});
+  app.get("/verify-email/:id", (req, res) => {
+    const { id } = req.params;
+    res.send(`${id}`);
+  });
 
   app.all("*", (req, res) => {
     res.status(404).send("Not Found!");

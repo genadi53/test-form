@@ -1,0 +1,20 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#form-container {
+  text-align: center;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+input {
+  margin-bottom: 10px;
+}
